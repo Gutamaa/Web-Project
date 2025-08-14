@@ -1,0 +1,13 @@
+            body {
+                background: url('../img/Background 2.png');
+                background-size: cover;
+                /* Menyesuaikan ukuran layar */
+                background-repeat: no-repeat;
+                /* Jangan diulang */
+                background-attachment: fixed;
+                /* Tetap saat scroll */
+            }
+
+            #home {
+                background: url('../img/Background.png');
+            }

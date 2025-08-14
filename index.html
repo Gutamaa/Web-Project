@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portofolio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="asset/css/style.css">
+
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="vh-100 d-flex align-items-center bg-primary text-white text-center">
+        <div class="container"><br><br><br>
+            <h1 class="display-3 fw-bold">Hi, I'm Farrel Apriello</h1>
+            <p class="lead">Engineer • CAD & Technical Drawing • Mechatronics Problem Solver </p>
+            <a href="#services" class="btn btn-light btn-lg mt-3">Explore</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Services</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Engineering Solutions</h5>
+                            <p class="card-text">Merancang dan mengembangkan solusi teknik yang inovatif untuk berbagai
+                                kebutuhan inovatif.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Technical Drawing & CAD</h5>
+                            <p class="card-text">Membuat gambar teknik presisi tinggi menggunakan perangkat lunak CAD
+                                untuk perancangan dan produksi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Mechatronics Development.</h5>
+                            <p class="card-text">Mengintegrasikan mekanik, elektronik, dan kontrol otomatis untuk
+                                menghasilkan sistem cerdas dan efisien.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4 text-white">About Me</h2>
+            <p class="lead text-white">Saya adalah seorang engineer yang berfokus pada bidang maintenance dan
+                kontraktor, dengan keahlian dalam gambar teknik, desain mekanikal, serta mekatronika. Berpengalaman
+                mengintegrasikan teknologi mekanik, elektronik, dan sistem kontrol untuk menciptakan solusi yang efisien
+                dan inovatif.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-4">Contact Me</h2>
+            <form class="mx-auto" style="max-width: 500px;" method="POST" action="simpan_pesan.php">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama</label>
+                    <input type="text" name="nama" id="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Pesan</label>
+                    <textarea name="pesan" id="message" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Kirim</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">farrel.ello@gmail.com l +62 822-2943-6365</p>
+    </footer>
+
+</body>
+
+
+</html>
