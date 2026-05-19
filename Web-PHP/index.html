@@ -1292,7 +1292,7 @@
                 </div>
                 <div class="contact-form reveal">
                     <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:1.8rem; color:var(--forest);">Kirim Pesan</h3>
-                    <form method="POST" action="simpan_pesan.php">
+                    <form id="contactForm">
                         <div class="form-group">
                             <label class="form-label" for="name">Nama Lengkap</label>
                             <input type="text" class="form-control" id="name" name="nama" placeholder="Masukkan nama kamu" required>
@@ -1306,17 +1306,17 @@
                             <select class="form-control" id="gunung-pilihan" name="gunung">
                                 <option value="">— Pilih gunung —</option>
                                 <option>Gunung Semeru (3.676 mdpl)</option>
-                                <option>Gunung Merapi (2.930 mdpl)</option>
-                                <option>Gunung Bromo (2.329 mdpl)</option>
-                                <option>Gunung Prau (2.565 mdpl)</option>
-                                <option>Gunung Merbabu (3.142 mdpl)</option>
-                                <option>Gunung Lawu (3.265 mdpl)</option>
-                                <option>Gunung Sindoro (3.136 mdpl)</option>
+                                <option>Gunung Slamet (3.428 mdpl)</option>
                                 <option>Gunung Sumbing (3.371 mdpl)</option>
-                                <option>Gunung Argopuro (3.088 mdpl)</option>
                                 <option>Gunung Raung (3.344 mdpl)</option>
                                 <option>Gunung Arjuno (3.339 mdpl)</option>
-                                <option>Gunung Slamet (3.428 mdpl)</option>
+                                <option>Gunung Lawu (3.265 mdpl)</option>
+                                <option>Gunung Sindoro (3.136 mdpl)</option>
+                                <option>Gunung Merbabu (3.142 mdpl)</option>
+                                <option>Gunung Argopuro (3.088 mdpl)</option>
+                                <option>Gunung Merapi (2.930 mdpl)</option>
+                                 <option>Gunung Prau (2.565 mdpl)</option>
+                                <option>Gunung Bromo (2.329 mdpl)</option>                                                                               
                             </select>
                         </div>
                         <div class="form-group">
@@ -1330,10 +1330,29 @@
         </div>
     </section>
 
+    <!-- Modal Terima Kasih -->
+<div id="thankYouModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(26,46,26,0.6); align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:12px; padding:2.5rem 2rem; text-align:center; max-width:360px; width:90%; margin:1rem;">
+    <div style="font-size:3rem; margin-bottom:1rem;">⛰️</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:#1a2e1a; margin-bottom:0.6rem;">Terima kasih telah menggunakan jasa kami!</h2>
+    <p style="color:#8a9080; font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem;">Pesan kamu sudah kami terima. Tim PuncakJawa akan segera menghubungi kamu.</p>
+    <button onclick="document.getElementById('thankYouModal').style.display='none'" style="background:#1a2e1a; color:#fff; border:none; padding:0.75rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer;">Tutup</button>
+  </div>
+</div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-logo">Puncak<span>Jawa</span></div>
         <p class="footer-text">© 2016 PuncakJawa — Agen Pendakian Gunung Jawa · hello@puncakjawa.id · +62 822-2943-6365</p>
+
+        <div id="thankYouModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(26,46,26,0.6); align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:12px; padding:2.5rem 2rem; text-align:center; max-width:360px; width:90%; margin:1rem;">
+    <div style="font-size:3rem; margin-bottom:1rem;">⛰️</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:#1a2e1a; margin-bottom:0.6rem;">Terima kasih telah menggunakan jasa kami!</h2>
+    <p style="color:#8a9080; font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem;">Pesan kamu sudah kami terima. Tim PuncakJawa akan segera menghubungi kamu.</p>
+    <button onclick="document.getElementById('thankYouModal').style.display='none'" style="background:#1a2e1a; color:#fff; border:none; padding:0.75rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer;">Tutup</button>
+  </div>
+</div>
     </footer>
 
     <script>
@@ -1366,6 +1385,12 @@
             });
         }, { threshold: 0.12 });
         revealEls.forEach(el => observer.observe(el));
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('thankYouModal').style.display = 'flex';
+    this.reset();
+});
     </script>
 
 </body>
