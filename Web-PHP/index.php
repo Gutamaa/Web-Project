@@ -276,14 +276,11 @@
             transform: translateY(-8px);
             box-shadow: 0 25px 50px rgba(26,46,26,0.15);
         }
-
-        /* ─── GUNUNG CARD IMAGE (foto atau SVG) ─── */
         .gunung-card-img {
             height: 180px;
             position: relative;
             overflow: hidden;
         }
-        /* Jika pakai <img> real photo */
         .gunung-card-img img {
             width: 100%;
             height: 100%;
@@ -292,14 +289,6 @@
             transition: transform 0.5s ease;
         }
         .gunung-card:hover .gunung-card-img img { transform: scale(1.07); }
-        /* Jika pakai SVG ilustrasi */
-        .gunung-card-img svg {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s;
-        }
-        .gunung-card:hover .gunung-card-img svg { transform: scale(1.05); }
-
         .gunung-card-badge {
             position: absolute;
             top: 1rem; right: 1rem;
@@ -510,6 +499,53 @@
         .footer-logo span { color: var(--gold); }
         .footer-text { font-size: 0.83rem; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
 
+        /* ─── MODAL ─── */
+        #thankYouModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(26,46,26,0.6);
+            align-items: center;
+            justify-content: center;
+        }
+        #thankYouModal.active { display: flex; }
+        .modal-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            max-width: 360px;
+            width: 90%;
+            margin: 1rem;
+        }
+        .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--forest);
+            margin-bottom: 0.6rem;
+        }
+        .modal-text {
+            color: var(--stone);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .modal-close {
+            background: var(--forest);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .modal-close:hover { background: var(--moss); }
+
         /* ─── ANIMATIONS ─── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }
@@ -549,24 +585,13 @@
             .about-features { grid-template-columns: 1fr; }
             .about-badge { right: 0; bottom: -3rem; }
         }
-
-        /* ─── IMAGE PLACEHOLDER (jika foto belum ada) ─── */
-        .img-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- ═══════════════════════════════════════
+         NAVBAR
+    ════════════════════════════════════════ -->
     <nav id="navbar">
         <a class="nav-brand" href="#home">Puncak<span>Jawa</span></a>
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -581,7 +606,9 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ═══════════════════════════════════════
+         HERO
+    ════════════════════════════════════════ -->
     <section id="home">
         <div class="hero-bg"></div>
         <div class="hero-stars"></div>
@@ -614,14 +641,16 @@
                     <div class="stat-label">Jalur Pendakian</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-num">12<span></span></div>
+                    <div class="stat-num">12</div>
                     <div class="stat-label">Gunung di Jawa</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gunung Section -->
+    <!-- ═══════════════════════════════════════
+         GUNUNG
+    ════════════════════════════════════════ -->
     <section id="gunung">
         <div class="container">
             <div class="gunung-header reveal">
@@ -640,25 +669,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/semeru.jfif" alt="Gunung Semeru">
-                            <defs>
-                                <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#1a2e3a"/>
-                                    <stop offset="100%" stop-color="#2d4a5e"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky1)"/>
-                            <circle cx="240" cy="35" r="18" fill="rgba(255,200,80,0.2)"/>
-                            <circle cx="240" cy="35" r="10" fill="rgba(255,200,100,0.7)"/>
-                            <circle cx="30" cy="20" r="1" fill="white" opacity="0.8"/>
-                            <circle cx="80" cy="12" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="150" cy="18" r="1" fill="white" opacity="0.6"/>
-                            <circle cx="190" cy="8" r="1.2" fill="white" opacity="0.9"/>
-                            <path d="M0,180 L0,130 L60,90 L90,110 L140,50 L180,85 L220,70 L270,100 L300,95 L300,180Z" fill="#1a3020"/>
-                            <path d="M100,180 L140,50 L180,85" fill="#2d5030"/>
-                            <path d="M130,62 L140,50 L150,62 L145,60 L140,55 L135,60Z" fill="white" opacity="0.85"/>
-                            <ellipse cx="140" cy="42" rx="8" ry="12" fill="rgba(200,200,200,0.2)"/>
-                            <ellipse cx="137" cy="32" rx="5" ry="8" fill="rgba(200,200,200,0.15)"/>
-                        </svg>
                         <div class="gunung-card-badge">⚡ Aktif</div>
                     </div>
                     <div class="gunung-card-body">
@@ -676,25 +686,7 @@
                 <!-- ══ 2. MERAPI ══ -->
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
-                        <!-- <img src="asset/img/merapi.jpg" alt="Gunung Merapi"> -->
-                        <img src="asset/img/merapi.jpg" alt="Gunung Merapi">g">
-                            <defs>
-                                <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#1f1a0a"/>
-                                    <stop offset="100%" stop-color="#3d2e10"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky2)"/>
-                            <ellipse cx="155" cy="75" rx="40" ry="20" fill="rgba(255,80,0,0.15)"/>
-                            <path d="M0,180 L0,120 L60,100 L120,80 L155,40 L190,80 L240,100 L300,110 L300,180Z" fill="#2a1a0a"/>
-                            <path d="M130,70 L155,40 L180,70" fill="#3d2510"/>
-                            <path d="M155,55 L158,65 L153,72 L160,68 L165,75" stroke="rgba(255,100,0,0.7)" stroke-width="2" fill="none"/>
-                            <circle cx="155" cy="42" r="4" fill="rgba(255,140,0,0.8)"/>
-                            <ellipse cx="155" cy="38" rx="6" ry="10" fill="rgba(255,80,0,0.25)"/>
-                            <circle cx="40" cy="25" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="100" cy="15" r="1.2" fill="white" opacity="0.8"/>
-                            <circle cx="240" cy="20" r="1" fill="white" opacity="0.6"/>
-                        </svg>
+                        <img src="asset/img/merapi.jpg" alt="Gunung Merapi">
                         <div class="gunung-card-badge">🔥 Aktif</div>
                     </div>
                     <div class="gunung-card-body">
@@ -713,25 +705,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/bromo.jpg" alt="Gunung Bromo">
-                            <defs>
-                                <linearGradient id="sky3" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%" stop-color="#1a1030"/>
-                                    <stop offset="60%" stop-color="#4a2020"/>
-                                    <stop offset="100%" stop-color="#8a4010"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky3)"/>
-                            <ellipse cx="200" cy="90" rx="60" ry="40" fill="rgba(255,140,50,0.2)"/>
-                            <ellipse cx="200" cy="95" rx="35" ry="25" fill="rgba(255,160,50,0.25)"/>
-                            <rect x="0" y="130" width="300" height="50" fill="#3a2a10"/>
-                            <path d="M60,180 L80,130 L110,140 L130,120 L150,125 L160,115 L175,118 L185,130 L200,180Z" fill="#2a1a08"/>
-                            <ellipse cx="160" cy="108" rx="10" ry="14" fill="rgba(200,200,200,0.3)"/>
-                            <ellipse cx="158" cy="96" rx="7" ry="10" fill="rgba(200,200,200,0.2)"/>
-                            <path d="M210,180 L240,80 L270,110 L300,100 L300,180Z" fill="rgba(50,30,10,0.8)"/>
-                            <circle cx="25" cy="20" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="70" cy="10" r="1" fill="white" opacity="0.8"/>
-                            <circle cx="110" cy="22" r="1.2" fill="white" opacity="0.6"/>
-                        </svg>
                         <div class="gunung-card-badge">🌄 Populer</div>
                     </div>
                     <div class="gunung-card-body">
@@ -749,26 +722,7 @@
                 <!-- ══ 4. PRAU ══ -->
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
-                        <img src="asset/img/prau.jpg" alt="Gunung Prau">>
-                            <defs>
-                                <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#0a1a2a"/>
-                                    <stop offset="100%" stop-color="#1a3a4a"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky4)"/>
-                            <path d="M20,60 Q150,10 280,50" stroke="rgba(200,200,255,0.15)" stroke-width="20" fill="none"/>
-                            <path d="M0,180 L0,110 L70,80 L130,100 L175,60 L220,90 L270,75 L300,85 L300,180Z" fill="#1a3020"/>
-                            <path d="M155,72 L175,60 L195,72" fill="#2a4a30"/>
-                            <circle cx="30" cy="25" r="1" fill="white" opacity="0.9"/>
-                            <circle cx="60" cy="15" r="1.3" fill="white" opacity="0.8"/>
-                            <circle cx="100" cy="30" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="140" cy="10" r="1.2" fill="white" opacity="0.9"/>
-                            <circle cx="200" cy="20" r="1" fill="white" opacity="0.8"/>
-                            <circle cx="250" cy="15" r="1.5" fill="rgba(255,220,100,0.9)"/>
-                            <circle cx="280" cy="30" r="1" fill="white" opacity="0.7"/>
-                            <path d="M80,120 L95,105 L110,120Z" fill="rgba(200,168,75,0.6)"/>
-                        </svg>
+                        <img src="asset/img/prau.jpg" alt="Gunung Prau">
                         <div class="gunung-card-badge">⭐ Favorit</div>
                     </div>
                     <div class="gunung-card-body">
@@ -787,23 +741,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/merbabu.jpg" alt="Gunung Merbabu">
-                            <defs>
-                                <linearGradient id="sky5" x1="0" y1="0" x2="0.5" y2="1">
-                                    <stop offset="0%" stop-color="#0d2a1a"/>
-                                    <stop offset="100%" stop-color="#1a4a2a"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky5)"/>
-                            <path d="M0,180 L0,105 L80,75 L130,95 L180,55 L220,80 L260,65 L300,80 L300,180Z" fill="#1a3a20"/>
-                            <path d="M160,68 L180,55 L200,68" fill="#2d5a30"/>
-                            <path d="M172,62 L180,55 L188,62 L184,60 L180,57 L176,60Z" fill="rgba(255,255,255,0.8)"/>
-                            <rect x="0" y="150" width="300" height="30" fill="#1a4a20" opacity="0.7"/>
-                            <path d="M20,150 Q30,140 40,150 Q50,140 60,150" stroke="#2a6a30" stroke-width="1" fill="none" opacity="0.6"/>
-                            <path d="M100,150 Q110,142 120,150 Q130,142 140,150" stroke="#2a6a30" stroke-width="1" fill="none" opacity="0.6"/>
-                            <circle cx="50" cy="20" r="1.2" fill="white" opacity="0.8"/>
-                            <circle cx="120" cy="12" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="260" cy="22" r="1.3" fill="rgba(200,168,75,0.9)"/>
-                        </svg>
                         <div class="gunung-card-badge">🌿 Hijau</div>
                     </div>
                     <div class="gunung-card-body">
@@ -822,23 +759,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/lawu.jpg" alt="Gunung Lawu">
-                            <defs>
-                                <linearGradient id="sky6" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#1a0a2a"/>
-                                    <stop offset="100%" stop-color="#2a1a3a"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky6)"/>
-                            <ellipse cx="150" cy="100" rx="200" ry="40" fill="rgba(200,200,255,0.05)"/>
-                            <path d="M0,180 L0,100 L90,70 L140,90 L185,45 L225,75 L280,60 L300,70 L300,180Z" fill="#1a1a3a"/>
-                            <path d="M165,58 L185,45 L205,58" fill="#2a2a5a"/>
-                            <circle cx="60" cy="30" r="14" fill="rgba(255,255,200,0.15)"/>
-                            <circle cx="60" cy="30" r="10" fill="rgba(255,255,200,0.6)"/>
-                            <ellipse cx="150" cy="95" rx="120" ry="15" fill="rgba(255,255,255,0.06)"/>
-                            <circle cx="120" cy="18" r="1" fill="white" opacity="0.8"/>
-                            <circle cx="200" cy="12" r="1.3" fill="white" opacity="0.9"/>
-                            <circle cx="250" cy="25" r="1" fill="white" opacity="0.7"/>
-                        </svg>
                         <div class="gunung-card-badge">🌙 Mistis</div>
                     </div>
                     <div class="gunung-card-body">
@@ -857,23 +777,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/sindoro.jpg" alt="Gunung Sindoro">
-                            <defs>
-                                <linearGradient id="sky7" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#0a1a30"/>
-                                    <stop offset="100%" stop-color="#1a3050"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky7)"/>
-                            <path d="M0,180 L0,115 L60,95 L100,110 L145,55 L185,80 L220,65 L260,85 L300,90 L300,180Z" fill="#1a3025"/>
-                            <path d="M125,68 L145,55 L165,68" fill="#2d5035"/>
-                            <path d="M137,63 L145,55 L153,63 L149,61 L145,58 L141,61Z" fill="rgba(255,255,255,0.85)"/>
-                            <ellipse cx="80" cy="108" rx="50" ry="10" fill="rgba(255,255,255,0.07)"/>
-                            <ellipse cx="230" cy="100" rx="40" ry="8" fill="rgba(255,255,255,0.06)"/>
-                            <circle cx="40" cy="22" r="1.2" fill="white" opacity="0.8"/>
-                            <circle cx="110" cy="12" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="220" cy="18" r="1.3" fill="rgba(200,168,75,0.9)"/>
-                            <circle cx="270" cy="28" r="1" fill="white" opacity="0.6"/>
-                        </svg>
                         <div class="gunung-card-badge">☁️ Kembar</div>
                     </div>
                     <div class="gunung-card-body">
@@ -892,22 +795,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/sumbing.jpg" alt="Gunung Sumbing">
-                            <defs>
-                                <linearGradient id="sky8" x1="0" y1="0" x2="0.3" y2="1">
-                                    <stop offset="0%" stop-color="#1a0820"/>
-                                    <stop offset="100%" stop-color="#2a1830"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky8)"/>
-                            <path d="M0,180 L0,120 L50,105 L110,115 L155,42 L195,100 L240,85 L300,100 L300,180Z" fill="#1e1428"/>
-                            <path d="M130,58 L155,42 L178,58" fill="#2d2040"/>
-                            <path d="M145,55 L155,42 L165,55 L160,52 L155,47 L150,52Z" fill="rgba(255,255,255,0.8)"/>
-                            <ellipse cx="155" cy="90" rx="100" ry="18" fill="rgba(150,100,200,0.07)"/>
-                            <path d="M250,25 A12,12 0 1,1 250,49 A8,8 0 1,0 250,25Z" fill="rgba(255,240,180,0.7)"/>
-                            <circle cx="30" cy="18" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="90" cy="25" r="1.2" fill="white" opacity="0.8"/>
-                            <circle cx="190" cy="14" r="1" fill="white" opacity="0.7"/>
-                        </svg>
                         <div class="gunung-card-badge">💜 Megah</div>
                     </div>
                     <div class="gunung-card-body">
@@ -926,24 +813,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/argopuro.jpg" alt="Gunung Argopuro">
-                            <defs>
-                                <linearGradient id="sky9" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#0d1a0d"/>
-                                    <stop offset="100%" stop-color="#1a3a1a"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky9)"/>
-                            <path d="M0,180 L0,120 L30,110 L70,115 L110,90 L150,100 L180,70 L210,85 L240,65 L270,80 L300,75 L300,180Z" fill="#152515"/>
-                            <path d="M220,72 L240,65 L258,72" fill="#254525"/>
-                            <rect x="0" y="148" width="300" height="32" fill="#1a3a10" opacity="0.8"/>
-                            <path d="M10,148 Q20,140 30,148 Q40,140 50,148" stroke="#2a5a20" stroke-width="1.2" fill="none" opacity="0.7"/>
-                            <path d="M60,148 Q70,141 80,148 Q90,141 100,148" stroke="#2a5a20" stroke-width="1.2" fill="none" opacity="0.7"/>
-                            <path d="M200,148 Q210,140 220,148 Q230,140 240,148" stroke="#2a5a20" stroke-width="1.2" fill="none" opacity="0.7"/>
-                            <circle cx="25" cy="20" r="1" fill="white" opacity="0.8"/>
-                            <circle cx="80" cy="10" r="1.3" fill="rgba(255,220,100,0.9)"/>
-                            <circle cx="160" cy="18" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="290" cy="22" r="1.2" fill="white" opacity="0.8"/>
-                        </svg>
                         <div class="gunung-card-badge">🦚 Eksotis</div>
                     </div>
                     <div class="gunung-card-body">
@@ -962,25 +831,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/raung.jfif" alt="Gunung Raung">
-                            <defs>
-                                <linearGradient id="sky10" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#1a0800"/>
-                                    <stop offset="100%" stop-color="#3a1800"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky10)"/>
-                            <ellipse cx="155" cy="80" rx="50" ry="30" fill="rgba(255,60,0,0.2)"/>
-                            <ellipse cx="155" cy="88" rx="30" ry="18" fill="rgba(255,100,0,0.25)"/>
-                            <path d="M0,180 L0,115 L70,100 L120,110 L155,35 L190,110 L240,95 L300,108 L300,180Z" fill="#2a0a00"/>
-                            <path d="M130,52 L155,35 L180,52" fill="#3d1500"/>
-                            <ellipse cx="155" cy="38" rx="12" ry="5" fill="rgba(255,80,0,0.5)"/>
-                            <path d="M155,43 L160,55 L155,62 L162,58 L168,70" stroke="rgba(255,120,0,0.6)" stroke-width="2" fill="none"/>
-                            <path d="M152,45 L148,58 L153,65" stroke="rgba(255,80,0,0.4)" stroke-width="1.5" fill="none"/>
-                            <ellipse cx="155" cy="25" rx="18" ry="12" fill="rgba(100,80,80,0.35)"/>
-                            <ellipse cx="150" cy="16" rx="12" ry="9" fill="rgba(120,100,100,0.25)"/>
-                            <circle cx="40" cy="20" r="1" fill="white" opacity="0.5"/>
-                            <circle cx="270" cy="15" r="1.2" fill="white" opacity="0.6"/>
-                        </svg>
                         <div class="gunung-card-badge">🌋 Kaldera</div>
                     </div>
                     <div class="gunung-card-body">
@@ -999,48 +849,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/arjuno.jpg" alt="Gunung Arjuno">
-                            <defs>
-                                <linearGradient id="sky11" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#0a1828"/>
-                                    <stop offset="50%" stop-color="#1e3050"/>
-                                    <stop offset="100%" stop-color="#2a4a3a"/>
-                                </linearGradient>
-                                <linearGradient id="arjuno-glow" x1="0.5" y1="0" x2="0.5" y2="1">
-                                    <stop offset="0%" stop-color="#5a8a6a" stop-opacity="0.4"/>
-                                    <stop offset="100%" stop-color="#1a3a20" stop-opacity="0"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky11)"/>
-                            <!-- aurora hint -->
-                            <ellipse cx="150" cy="50" rx="140" ry="35" fill="rgba(80,180,100,0.08)"/>
-                            <!-- background ridge -->
-                            <path d="M0,180 L0,130 L50,115 L90,125 L130,100 L165,112 L200,95 L230,108 L260,88 L300,100 L300,180Z" fill="#1a3a20" opacity="0.7"/>
-                            <!-- main Arjuno peak — twin summit (Arjuno-Welirang complex) -->
-                            <path d="M0,180 L0,135 L60,110 L100,125 L145,48 L175,75 L210,58 L240,80 L280,70 L300,82 L300,180Z" fill="#1e3a28"/>
-                            <!-- Arjuno peak -->
-                            <path d="M120,70 L145,48 L168,70" fill="#2a5038"/>
-                            <!-- Welirang secondary peak -->
-                            <path d="M192,68 L210,58 L228,68" fill="#2a4a35"/>
-                            <!-- snow cap Arjuno -->
-                            <path d="M135,62 L145,48 L155,62 L150,59 L145,53 L140,59Z" fill="rgba(255,255,255,0.88)"/>
-                            <!-- steam Welirang (active) -->
-                            <ellipse cx="210" cy="50" rx="7" ry="11" fill="rgba(220,220,220,0.25)"/>
-                            <ellipse cx="208" cy="40" rx="5" ry="8" fill="rgba(220,220,220,0.18)"/>
-                            <!-- pine trees foreground -->
-                            <path d="M15,165 L25,145 L35,165Z" fill="#1a4a20"/>
-                            <path d="M260,170 L270,150 L280,170Z" fill="#1a4a20"/>
-                            <path d="M275,168 L284,150 L293,168Z" fill="#1a5a25"/>
-                            <!-- cloud sea -->
-                            <ellipse cx="75" cy="128" rx="55" ry="10" fill="rgba(255,255,255,0.06)"/>
-                            <ellipse cx="230" cy="118" rx="45" ry="8" fill="rgba(255,255,255,0.05)"/>
-                            <!-- stars -->
-                            <circle cx="20" cy="18" r="1.2" fill="white" opacity="0.9"/>
-                            <circle cx="55" cy="10" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="100" cy="22" r="1.3" fill="rgba(200,168,75,0.95)"/>
-                            <circle cx="180" cy="12" r="1" fill="white" opacity="0.8"/>
-                            <circle cx="240" cy="20" r="1.1" fill="white" opacity="0.7"/>
-                            <circle cx="285" cy="10" r="1.2" fill="white" opacity="0.85"/>
-                        </svg>
                         <div class="gunung-card-badge">👑 Megah</div>
                     </div>
                     <div class="gunung-card-body">
@@ -1059,49 +867,6 @@
                 <div class="gunung-card reveal">
                     <div class="gunung-card-img">
                         <img src="asset/img/slamet.jpg" alt="Gunung Slamet">
-                            <defs>
-                                <linearGradient id="sky12" x1="0" y1="0" x2="0.2" y2="1">
-                                    <stop offset="0%" stop-color="#100a20"/>
-                                    <stop offset="40%" stop-color="#1a1535"/>
-                                    <stop offset="100%" stop-color="#2a2040"/>
-                                </linearGradient>
-                                <radialGradient id="slamet-fire" cx="50%" cy="40%" r="40%">
-                                    <stop offset="0%" stop-color="#ff6000" stop-opacity="0.35"/>
-                                    <stop offset="100%" stop-color="#ff2000" stop-opacity="0"/>
-                                </radialGradient>
-                            </defs>
-                            <rect width="300" height="180" fill="url(#sky12)"/>
-                            <!-- deep purple sky atmosphere -->
-                            <ellipse cx="150" cy="60" rx="160" ry="50" fill="rgba(80,40,120,0.1)"/>
-                            <!-- lava/crater glow -->
-                            <ellipse cx="152" cy="68" rx="35" ry="22" fill="url(#slamet-fire)"/>
-                            <!-- background mountains softer -->
-                            <path d="M0,180 L0,130 L45,115 L85,128 L115,108 L148,120 L180,100 L220,115 L255,98 L300,108 L300,180Z" fill="#1a1530" opacity="0.8"/>
-                            <!-- Slamet — massive broad stratovolcano silhouette -->
-                            <path d="M-10,180 L40,140 L80,145 L120,90 L152,35 L183,90 L220,142 L260,138 L310,180Z" fill="#201828"/>
-                            <!-- crater rim highlight -->
-                            <path d="M128,55 L152,35 L175,55 L168,50 L152,40 L136,50Z" fill="#2a2040"/>
-                            <!-- crater glow rim -->
-                            <ellipse cx="152" cy="40" rx="14" ry="6" fill="rgba(255,80,0,0.45)"/>
-                            <!-- lava particles -->
-                            <circle cx="148" cy="45" r="1.5" fill="rgba(255,140,0,0.7)"/>
-                            <circle cx="158" cy="42" r="1" fill="rgba(255,100,0,0.6)"/>
-                            <circle cx="152" cy="38" r="2" fill="rgba(255,160,0,0.8)"/>
-                            <!-- ash / smoke plume -->
-                            <ellipse cx="150" cy="24" rx="20" ry="14" fill="rgba(80,70,90,0.4)"/>
-                            <ellipse cx="148" cy="13" rx="14" ry="10" fill="rgba(90,80,100,0.3)"/>
-                            <ellipse cx="155" cy="5" rx="9" ry="7" fill="rgba(70,60,80,0.2)"/>
-                            <!-- forest belt on slope -->
-                            <path d="M60,148 Q70,138 80,148 Q90,138 100,148" stroke="#2a4a30" stroke-width="1.5" fill="none" opacity="0.6"/>
-                            <path d="M180,148 Q190,138 200,148 Q210,140 220,148" stroke="#2a4a30" stroke-width="1.5" fill="none" opacity="0.6"/>
-                            <!-- stars (faint, smoke partially obscures) -->
-                            <circle cx="22" cy="15" r="1" fill="white" opacity="0.6"/>
-                            <circle cx="65" cy="8" r="1.2" fill="rgba(200,168,75,0.8)"/>
-                            <circle cx="240" cy="12" r="1" fill="white" opacity="0.7"/>
-                            <circle cx="278" cy="22" r="1.1" fill="white" opacity="0.6"/>
-                            <!-- milky band faint -->
-                            <path d="M230,30 Q250,18 280,28" stroke="rgba(200,200,255,0.07)" stroke-width="8" fill="none"/>
-                        </svg>
                         <div class="gunung-card-badge">🔥 Aktif</div>
                     </div>
                     <div class="gunung-card-body">
@@ -1120,7 +885,9 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- ═══════════════════════════════════════
+         SERVICES
+    ════════════════════════════════════════ -->
     <section id="services">
         <div class="container">
             <div class="reveal" style="max-width:540px">
@@ -1162,7 +929,9 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ═══════════════════════════════════════
+         ABOUT
+    ════════════════════════════════════════ -->
     <section id="about">
         <div class="container">
             <div class="about-grid">
@@ -1249,7 +1018,9 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ═══════════════════════════════════════
+         CONTACT
+    ════════════════════════════════════════ -->
     <section id="contact">
         <div class="container">
             <div class="contact-wrapper">
@@ -1290,9 +1061,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="contact-form reveal">
                     <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:1.8rem; color:var(--forest);">Kirim Pesan</h3>
-                    <form id="contactForm">
+                    <form method="POST" action="simpan_pesan.php">
                         <div class="form-group">
                             <label class="form-label" for="name">Nama Lengkap</label>
                             <input type="text" class="form-control" id="name" name="nama" placeholder="Masukkan nama kamu" required>
@@ -1311,12 +1083,12 @@
                                 <option>Gunung Raung (3.344 mdpl)</option>
                                 <option>Gunung Arjuno (3.339 mdpl)</option>
                                 <option>Gunung Lawu (3.265 mdpl)</option>
-                                <option>Gunung Sindoro (3.136 mdpl)</option>
                                 <option>Gunung Merbabu (3.142 mdpl)</option>
+                                <option>Gunung Sindoro (3.136 mdpl)</option>
                                 <option>Gunung Argopuro (3.088 mdpl)</option>
                                 <option>Gunung Merapi (2.930 mdpl)</option>
-                                 <option>Gunung Prau (2.565 mdpl)</option>
-                                <option>Gunung Bromo (2.329 mdpl)</option>                                                                               
+                                <option>Gunung Prau (2.565 mdpl)</option>
+                                <option>Gunung Bromo (2.329 mdpl)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1330,51 +1102,48 @@
         </div>
     </section>
 
-    <!-- Modal Terima Kasih -->
-<div id="thankYouModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(26,46,26,0.6); align-items:center; justify-content:center;">
-  <div style="background:#fff; border-radius:12px; padding:2.5rem 2rem; text-align:center; max-width:360px; width:90%; margin:1rem;">
-    <div style="font-size:3rem; margin-bottom:1rem;">⛰️</div>
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:#1a2e1a; margin-bottom:0.6rem;">Terima kasih telah menggunakan jasa kami!</h2>
-    <p style="color:#8a9080; font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem;">Pesan kamu sudah kami terima. Tim PuncakJawa akan segera menghubungi kamu.</p>
-    <button onclick="document.getElementById('thankYouModal').style.display='none'" style="background:#1a2e1a; color:#fff; border:none; padding:0.75rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer;">Tutup</button>
-  </div>
-</div>
+    <!-- ═══════════════════════════════════════
+         MODAL TERIMA KASIH (satu, di luar footer)
+    ════════════════════════════════════════ -->
+    <div id="thankYouModal">
+        <div class="modal-box">
+            <div class="modal-icon">⛰️</div>
+            <h2 class="modal-title">Terima kasih telah menggunakan jasa kami!</h2>
+            <p class="modal-text">Pesan kamu sudah kami terima. Tim PuncakJawa akan segera menghubungi kamu.</p>
+            <button class="modal-close" onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
 
-    <!-- Footer -->
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════ -->
     <footer>
         <div class="footer-logo">Puncak<span>Jawa</span></div>
         <p class="footer-text">© 2016 PuncakJawa — Agen Pendakian Gunung Jawa · hello@puncakjawa.id · +62 822-2943-6365</p>
-
-        <div id="thankYouModal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(26,46,26,0.6); align-items:center; justify-content:center;">
-  <div style="background:#fff; border-radius:12px; padding:2.5rem 2rem; text-align:center; max-width:360px; width:90%; margin:1rem;">
-    <div style="font-size:3rem; margin-bottom:1rem;">⛰️</div>
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:#1a2e1a; margin-bottom:0.6rem;">Terima kasih telah menggunakan jasa kami!</h2>
-    <p style="color:#8a9080; font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem;">Pesan kamu sudah kami terima. Tim PuncakJawa akan segera menghubungi kamu.</p>
-    <button onclick="document.getElementById('thankYouModal').style.display='none'" style="background:#1a2e1a; color:#fff; border:none; padding:0.75rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer;">Tutup</button>
-  </div>
-</div>
     </footer>
 
+    <!-- ═══════════════════════════════════════
+         SCRIPTS
+    ════════════════════════════════════════ -->
     <script>
-        // Navbar scroll effect
+        // ── Navbar scroll effect
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            nav.classList.toggle('scrolled', window.scrollY > 60);
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // Hamburger menu
+        // ── Hamburger menu
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('open');
         }
 
-        // Close nav on link click (mobile)
+        // ── Close nav on link click (mobile)
         document.querySelectorAll('.nav-links a').forEach(a => {
             a.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('open');
             });
         });
 
-        // Reveal on scroll
+        // ── Reveal on scroll
         const revealEls = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
@@ -1386,11 +1155,22 @@
         }, { threshold: 0.12 });
         revealEls.forEach(el => observer.observe(el));
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('thankYouModal').style.display = 'flex';
-    this.reset();
-});
+        // ── Modal helpers
+        function openModal() {
+            document.getElementById('thankYouModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('thankYouModal').classList.remove('active');
+        }
+
+        // ── Tampilkan modal setelah redirect dari simpan_pesan.php (opsional)
+        // Contoh: jika URL mengandung ?success=1
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('success') === '1') {
+            openModal();
+            // Hapus query string dari URL tanpa reload
+            history.replaceState({}, '', window.location.pathname);
+        }
     </script>
 
 </body>
